@@ -1,0 +1,22 @@
+version: '2'
+services:
+    mysql:
+        build: ./mysql/
+        volumes:
+            - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: testpassword
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        depends_on:
+            - mysql
+        ports:
+            - 8080:80
+        links:
+            - mysql
+        environment:
+            PMA_root: mysql
