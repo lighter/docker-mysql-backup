@@ -3,7 +3,7 @@
 在既有的 mysql 中加入 crontab 的方式去定期備份 data。
 
 
-##Step 1. init database
+## Step 1. init database
 
 希望一開始就幫我們把資料加入，因此 mount 一個 docker-entrypoint-initdb.d 到 container 內的。可參考[[Mysql Docker Hub](https://hub.docker.com/_/mysql/)]
 
@@ -44,7 +44,7 @@ VALUES ('task 1'),
        ('task 2');
 ```
 
-##Step 2. Add crontab
+## Step 2. Add crontab
 
 
 特地把 mysql_backup mount 到 local 的 backup_sql。
@@ -76,7 +76,7 @@ mysqldump -u test -ptestpassword -h mysql develop > /backup_sql/$now.sql
 ```
 
 
-##Ref
+## Ref
 
 * [How to run a cron job inside a docker container](https://stackoverflow.com/questions/37015624/how-to-run-a-cron-job-inside-a-docker-container)
 * [Docker Hub - Mysql](https://hub.docker.com/_/mysql/)
